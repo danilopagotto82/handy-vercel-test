@@ -1,0 +1,10 @@
+{
+  "id": "assistido-stremio-addon",
+  "version": "1.0.0",
+  "name": "Assistido Trakt",
+  "description": "Badge “Já assistido” nos seus filmes (via Trakt)",
+  "resources": ["meta","configuration"],
+  "types": ["movie"],
+  "idPrefixes": ["tt"],
+  "behaviorHints": { "configurationRequired": true }
+}
