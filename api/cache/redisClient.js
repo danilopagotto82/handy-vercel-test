@@ -1,10 +1,31 @@
-// Crie esta pasta/api/cache/redisClient.js
-const { createClient } = require('redis');
-const client = createClient({ url: process.env.REDIS_URL });
-module.exports = {
-  connect:   () => client.connect(),
-  get:       (k) => client.get(k),
-  set:       (k,v, exFlag, ex) => client.set(k,v, exFlag, ex),
-  isReady:   () => client.isReady,
-  disconnect:() => client.quit()
-};
+// api/cache/redisClient.js
+import { createClient } from 'redis';
+
+let client;
+
+function getRedisClient() {
+  if (!client) {
+    client = createClient({
+      url: process.env.REDIS_URL,
+      // opcional: legacyMode: true  
+    });
+
+    // evita “Unhandled promise rejections”
+    client.on('error', err => console.error('[REDIS] Error', err));
+
+    // conecta de uma vez
+    client.connect()
+      .then(() => console.log('[REDIS] Connected'))
+      .catch(err => console.error('[REDIS] Connect error', err));
+  }
+
+  // se já existe mas está fechado, reconecta
+  if (!client.isOpen) {
+    console.log('[REDIS] Reconectando...');
+    await client.connect();
+  }
+
+  return client;
+}
+
+export default getRedisClient();
