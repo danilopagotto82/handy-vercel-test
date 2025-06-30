@@ -1,5 +1,3 @@
-// api/meta.js
-
 import redisClient from './cache/redisClient.js';
 import fetch from 'node-fetch';
 
