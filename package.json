@@ -18,6 +18,7 @@
   "homepage": "https://github.com/danilopagotto82/handy-vercel-test#readme",
   "description": "",
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.10.0",
+    "redis": "^5.5.6"
   }
 }
