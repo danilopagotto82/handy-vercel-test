@@ -1,15 +1,12 @@
 {
   "version": 2,
   "builds": [
-    { "src": "public/**/*",        "use": "@vercel/static" },
-    { "src": "api/**/*.js",        "use": "@vercel/node"   }
+    { "src": "api/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/manifest.json",     "dest": "/public/manifest.json" },
-    { "src": "/auth/device",       "dest": "/api/auth.device.js"     },
-    { "src": "/auth/callback",     "dest": "/api/auth.callback.js"   },
-    { "src": "/meta",              "dest": "/api/meta.js"            },
-    { "src": "/(.*)",              "dest": "/api/index.js"           }
+    { "src": "/meta",              "dest": "/api/meta.js" },
+    { "src": "/auth/device",       "dest": "/api/auth.device.js" },
+    { "src": "/auth/callback",     "dest": "/api/auth.callback.js" },
+    { "src": "/api/(.*)",          "dest": "/api/index.js" }
   ]
 }
