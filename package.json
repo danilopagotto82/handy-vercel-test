@@ -1,0 +1,23 @@
+{
+  "name": "handy-vercel-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danilopagotto82/handy-vercel-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danilopagotto82/handy-vercel-test/issues"
+  },
+  "homepage": "https://github.com/danilopagotto82/handy-vercel-test#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.10.0"
+  }
+}
