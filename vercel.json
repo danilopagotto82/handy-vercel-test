@@ -1,12 +1,19 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
+    { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/meta",          "dest": "/api/meta.js" },
-    { "src": "/auth/device",   "dest": "/api/auth.device.js" },
-    { "src": "/auth/callback", "dest": "/api/auth.callback.js" },
-    { "src": "/api/(.*)",      "dest": "/api/index.js" }
+    // direciona /meta → api/meta.js
+    { "src": "^/meta$",         "dest": "/api/meta.js" },
+    // e /api/meta → api/meta.js também
+    { "src": "^/api/meta$",     "dest": "/api/meta.js" },
+
+    // auth (caso use subpastas em api/auth/)
+    { "src": "^/auth/device$",   "dest": "/api/auth/device.js" },
+    { "src": "^/auth/callback$", "dest": "/api/auth/callback.js" },
+
+    // tudo o que começar com /api/ (menos /api/meta) vai pra index.js
+    { "src": "^/api/(.*)$",      "dest": "/api/index.js" }
   ]
 }
