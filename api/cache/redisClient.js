@@ -5,7 +5,13 @@ let connecting;
 
 async function getRedisClient() {
   if (!client) {
-    client = createClient({ url: process.env.REDIS_URL });
+    client = createClient({
+      url: process.env.REDIS_URL,
+      socket: {
+        tls: true,
+        rejectUnauthorized: false
+      }
+    });
     client.on('error', err => console.error('[REDIS] Error', err));
   }
 
