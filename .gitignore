@@ -15,3 +15,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .vercel
+
+echo "_logs.txt" >> .gitignore
+git add .gitignore
+git commit -m "chore: ignora _logs.txt local"
+git push
+.env*.local
